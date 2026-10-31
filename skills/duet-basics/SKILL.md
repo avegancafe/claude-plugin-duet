@@ -16,7 +16,8 @@ section) rather than working around it silently.
   show up in Duet. To use one in Duet, install it to the claude.ai chat plugins.
 - Kyle's marketplace, `avegancafe/avegancafe-marketplace`, is linked to his
   claude.ai account as an account marketplace, so its plugins (this one included)
-  can be installed from there.
+  can be installed from there. The marketplace only lists plugins; this plugin's
+  source lives in its own repo, `avegancafe/claude-plugin-duet`.
 - **Plugins load when a session starts.** There is no command to resync plugins or
   restart a running session.
 - **Every new thread is a fresh session.** To pick up a plugin that was just
@@ -50,14 +51,19 @@ section) rather than working around it silently.
 ## Adding to this plugin
 
 When you learn something specific to how Duet works (not general Claude or
-Claude Code behavior), add it here so future threads and channels know it:
+Claude Code behavior), add it here so future threads and channels know it.
+This plugin lives in **`avegancafe/claude-plugin-duet`**, not the marketplace
+repo; don't open Duet learnings as PRs on `avegancafe/avegancafe-marketplace`.
 
-1. Put it in the skill that fits its subject, or add a new skill under
-   `plugins/duet/skills/<name>/SKILL.md` when it's a new subject. Keep each line a
-   fact plus, when useful, what to do about it. Don't record guesses.
-2. Follow the repo's `CLAUDE.md`: bump `plugins/duet/.claude-plugin/plugin.json`
-   and the `duet` entry in `.claude-plugin/marketplace.json` together, bump
-   `metadata.version`, add a `CHANGELOG.md` entry, and list any new skill in
-   `plugins/duet/README.md`.
-3. Open a PR on `avegancafe/avegancafe-marketplace` for Kyle to merge. Never push
-   to `main` or merge it yourself.
+1. Work in `avegancafe/claude-plugin-duet`. If your thread can't reach it, ask
+   the channel's coordinator to add that repo to the channel, then have it start
+   a new thread (see "Channels, threads and repos").
+2. Put the fact in the skill that fits its subject, or add a new skill at
+   `skills/<name>/SKILL.md` when it's a new subject. Keep each line a fact plus,
+   when useful, what to do about it. Don't record guesses.
+3. List any new skill in the repo's `README.md` and bump `version` in
+   `.claude-plugin/plugin.json` (minor for a new skill or fact, patch for a fix).
+   Don't touch the marketplace repo: once the bump merges, this repo's release
+   workflow tells the marketplace, which updates the `duet` entry itself.
+4. Open a PR on `avegancafe/claude-plugin-duet` for Kyle to merge. Never push to
+   `main` or merge it yourself.
