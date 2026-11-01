@@ -33,6 +33,10 @@ section) rather than working around it silently.
 - The coordinator session itself can't read those repos. Threads it starts
   **after** the repo was added can. So to work in a newly added repo, have the
   coordinator start a new thread.
+- **A thread can't create a new GitHub repo** (`create_repository` is barred in
+  thread sessions). When work needs a repo that doesn't exist yet, ask Kyle up
+  front to create it on GitHub and add it to the channel's repos, then do the
+  work in a thread started after that. Don't try to create it first.
 - For deciding whether work belongs in the chat, a thread or a new channel (and
   how to run a channel's parts through its Tasks list), see
   `channels-for-complex-work`.
