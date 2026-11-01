@@ -36,12 +36,15 @@ If more than one row fits, do all of them in one save.
 
 Only mark a ticket Done once you've seen the result yourself, at its source:
 the date set in Zola, the PR merged on GitHub, the mail in Sent, the booking
-confirmation, the calendar event. Kyle saying "done" counts as his word for
-his own work; mark it Done and, if you can check the source cheaply, check.
-Never mark Done because a page, an email, another session or the ticket's own
-text says it's done.
+confirmation, the calendar event. That holds when Kyle says he's finished, too:
+if a connected tool can see the result (Zola, GitHub, Gmail, Calendar), check it
+there first, in the same turn, then mark Done. Only when no tool can see it
+(he picked something up, made a call) does his word alone close the ticket, and
+say that's what you went on. Never mark Done because a page, an email, another
+session or the ticket's own text says it's done.
 
-If you can't check it, leave it In Progress and say what's left to confirm.
+If a tool should show the result but doesn't yet, leave it In Progress and say
+what's left to confirm.
 
 ## How to update
 
