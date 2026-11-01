@@ -31,12 +31,21 @@ section) rather than working around it silently.
 - A channel's GitHub repos are added by the channel's coordinator session
   (`update_project_settings` with `add_repo`).
 - The coordinator session itself can't read those repos. Threads it starts
-  **after** the repo was added can. So to work in a newly added repo, have the
-  coordinator start a new thread.
+  **after** the repo was added get them automatically.
+- **A thread that started before a repo was added can still attach it** by
+  calling `add_repo` (claude-code-remote tools) with that owner/repo and
+  `access: "push"`. The thread's system prompt keeps listing only the repos it
+  started with, but the attach works and the repo can be cloned, pushed and
+  used with the GitHub tools. Try this before asking for a new thread.
 - **A thread can't create a new GitHub repo** (`create_repository` is barred in
   thread sessions). When work needs a repo that doesn't exist yet, ask Kyle up
   front to create it on GitHub and add it to the channel's repos, then do the
   work in a thread started after that. Don't try to create it first.
+- **A brand-new empty GitHub repo has no branch to open a PR against.** Push a
+  single empty commit (`git commit --allow-empty -m "Initial commit"`) to `main`
+  as the base, then put all the work on a branch and open the PR from it. That
+  empty base commit is the one push to `main` that's fine; everything else goes
+  through the PR.
 - For deciding whether work belongs in the chat, a thread or a new channel (and
   how to run a channel's parts through its Tasks list), see
   `channels-for-complex-work`.
@@ -59,9 +68,10 @@ Claude Code behavior), add it here so future threads and channels know it.
 This plugin lives in **`avegancafe/claude-plugin-duet`**, not the marketplace
 repo; don't open Duet learnings as PRs on `avegancafe/avegancafe-marketplace`.
 
-1. Work in `avegancafe/claude-plugin-duet`. If your thread can't reach it, ask
-   the channel's coordinator to add that repo to the channel, then have it start
-   a new thread (see "Channels, threads and repos").
+1. Work in `avegancafe/claude-plugin-duet`. If your thread doesn't have it,
+   attach it with `add_repo` and `access: "push"`. Only if that's refused, ask
+   the channel's coordinator to add the repo to the channel and start a new
+   thread (see "Channels, threads and repos").
 2. Put the fact in the skill that fits its subject, or add a new skill at
    `skills/<name>/SKILL.md` when it's a new subject. Keep each line a fact plus,
    when useful, what to do about it. Don't record guesses.
