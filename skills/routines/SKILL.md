@@ -11,8 +11,9 @@ Kyle's routines. Each one was observed, not guessed.
 ## What a routine run can't do
 
 - **A routine's run can't reach GitHub repos, can't start thread sessions, and
-  doesn't see the channel's shared files (`/mnt/project-files`).** Threads in
-  the channel can do all three.
+  doesn't see the channel's shared files (`/mnt/project-files`).** A thread in
+  the channel can reach repos and the shared files; the channel's coordinator
+  is the one that starts threads.
 - So when a routine's job needs any of those, split it: the routine only posts
   a short nudge, and when Kyle replies (e.g. "run the sweep"), the channel's
   coordinator starts a thread that does the work. Keep the full instructions in
