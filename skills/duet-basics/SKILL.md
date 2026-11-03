@@ -1,6 +1,6 @@
 ---
 name: duet-basics
-description: Use when working inside Claude Duet (a main chat, a channel or a thread) and unsure how plugins, threads, channels, channel instructions, repos or sessions behave there — e.g. why a plugin isn't showing up, how to pick up a newly installed plugin, how to give a channel access to a GitHub repo, or how to make a channel always use a plugin agent. Also covers how to add what you learn about Duet back into this plugin.
+description: Use when working inside Claude Duet (a main chat, a channel or a thread) and unsure how plugins, threads, channels, channel instructions, repos, sessions, message bubbles or multi-account connectors behave there — e.g. why a plugin isn't showing up, how to pick up a newly installed plugin, how to give a channel access to a GitHub repo, how to make a channel always use a plugin agent, why a message arrived as several bubbles, or which of two Gmail or Calendar tool sets is which account. Also covers how to add what you learn about Duet back into this plugin.
 ---
 
 # Claude Duet basics
@@ -49,6 +49,26 @@ section) rather than working around it silently.
 - For deciding whether work belongs in the chat, a thread or a new channel (and
   how to run a channel's parts through its Tasks list), see
   `channels-for-complex-work`.
+
+## Messages
+
+- **Empty lines in a posted message split it into separate chat bubbles.** Each
+  paragraph shows as its own bubble. To make something arrive as one message
+  (a routine post, a digest, a list), use no empty lines in it; to split it on
+  purpose, put an empty line exactly where the break should go.
+- When relaying something already formatted (a routine's post, another
+  session's report), keep its layout exactly, empty lines included.
+
+## Connectors with more than one account
+
+- **With two accounts connected for one app (e.g. two Gmails or two Google
+  Calendars), each account gets its own set of tools**: one plain
+  (`mcp__Gmail__*`) and one with a suffix (`mcp__Gmail_<hash>__*`).
+- **Each tool's description starts with `Account address: ...`**, naming the
+  account it acts on. Read that line (load the tool with `ToolSearch` if it's
+  deferred) before reading or writing, and don't assume the plain prefix is
+  Kyle's main account. Which tool set you pick decides which mailbox a draft
+  lands in or which calendar an event goes on.
 
 ## Channel instructions
 
