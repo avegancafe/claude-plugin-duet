@@ -1,6 +1,6 @@
 ---
 name: routines
-description: Use in Claude Duet when creating, changing, retiring or relaying a scheduled routine (create_trigger, update_trigger, delete_trigger), or when a routine's job needs a GitHub repo, a thread or the channel's files. Covers what a routine run can't do and the nudge-then-thread pattern, leaving connectors off create_trigger, routines asked for from another channel, keeping routine posts one message, the Routine header and [endof] footer every routine post carries, and disabling instead of deleting.
+description: "Use in Claude Duet whenever you create, reschedule, edit, pause, retire or relay a scheduled routine or recurring watch (create_trigger, update_trigger, delete_trigger), write or change a routine's prompt, or are a routine run yourself. Kyle's rule: every routine post opens with a 'Routine: <kebab-name>' line and ends with an '[endof <kebab-name>]' line. Also covers what a run can't reach (repos, threads, the channel's files) and the nudge-then-thread pattern, leaving connectors off create_trigger, routines asked for from another channel, one-message posts, and disabling instead of deleting."
 ---
 
 # Routines in Duet
