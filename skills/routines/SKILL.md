@@ -1,6 +1,6 @@
 ---
 name: routines
-description: Use in Claude Duet when creating, changing, retiring or relaying a scheduled routine (create_trigger, update_trigger, delete_trigger), or when a routine's job needs a GitHub repo, a thread or the channel's files. Covers what a routine run can't do and the nudge-then-thread pattern, leaving connectors off create_trigger, routines asked for from another channel, keeping routine posts one message, and disabling instead of deleting.
+description: Use in Claude Duet when creating, changing, retiring or relaying a scheduled routine (create_trigger, update_trigger, delete_trigger), or when a routine's job needs a GitHub repo, a thread or the channel's files. Covers what a routine run can't do and the nudge-then-thread pattern, leaving connectors off create_trigger, routines asked for from another channel, keeping routine posts one message, the Routine header and [endof] footer every routine post carries, and disabling instead of deleting.
 ---
 
 # Routines in Duet
@@ -35,11 +35,32 @@ Kyle's routines. Each one was observed, not guessed.
 
 ## Posts and relays
 
+- **Every routine post opens with a header line and ends with a footer line**
+  (Kyle's rule, for all Duet channels), so he can tell where a routine's output
+  starts and ends:
+
+  ```
+  Routine: <routine-name-in-kebab-case>
+  ...the routine's post...
+  [endof <routine-name-in-kebab-case>]
+  ```
+
+  The angle brackets only mark where the name goes: a routine called
+  "Morning digest" opens with `Routine: morning-digest` and ends with
+  `[endof morning-digest]`. Keep the square brackets in the footer; send no
+  angle brackets, XML or other markup. Use the same name in both lines.
+- When creating or updating a routine (`create_trigger`, `update_trigger`),
+  its prompt tells the run to post with this header and footer, giving the
+  exact name to use. When you touch an existing routine whose prompt doesn't
+  say so yet, add it.
+- When relaying a routine's post, add the header and footer if the post is
+  missing either one; don't add them twice.
 - Empty lines in a posted message split it into separate chat bubbles (see
   `duet-basics`, "Messages"). A routine post meant to arrive as one message
   has no empty lines, and its prompt should say so.
 - When relaying a routine's post, keep its layout exactly: no lead line of your
-  own, and no empty lines added or removed.
+  own (the `Routine:` header is the only first line), and no empty lines added
+  or removed.
 
 ## Changing or retiring one
 
